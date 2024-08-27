@@ -1,0 +1,78 @@
+CREATE DATABASE	IF NOT EXISTS COLEGIO;
+USE COLEGIO;
+CREATE TABLE IF NOT EXISTS ESTUDIANTE(
+    STUDENTID INT PRIMARY KEY,
+    FIRSTNAME VARCHAR(50),
+    LASTNAME VARCHAR(50),
+    AGE BIGINT,
+    EMAIL VARCHAR(100),
+    LOADDATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UPDATEDATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS INSTRUCTORS (
+    INSTRUCTORID INT PRIMARY KEY,
+    FIRSTNAME VARCHAR(50),
+    LASTNAME VARCHAR(50),
+    AGE BIGINT,
+    EMAIL VARCHAR(100),
+    LOADDATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UPDATEDATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS COURSES (
+    COURSESID INT PRIMARY KEY,
+    COURSENAME VARCHAR(100),
+    DESCRIPTION TEXT,
+    INSTRUCTORID INT,
+    DURATIONHOURS INT,
+    LOAD_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UPDATE_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (INSTRUCTORID) REFERENCES INSTRUCTORS(INSTRUCTORID)
+);
+
+CREATE TABLE IF NOT EXISTS STUDENT_COURSES (
+    STUDENTID INT NOT NULL,
+    COURSESID INT NOT NULL,
+    LOAD_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UPDATE_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (STUDENTID) REFERENCES STUDENTS(STUDENTID),
+    FOREIGN KEY (COURSESID) REFERENCES COURSES(COURSESID)
+);
+USE COLEGIO;
+SELECT * FROM INSTRUCTORS;
+
+-- Insertar datos en la tabla STUDENTS
+INSERT INTO ESTUDIANTE(STUDENTID,FIRSTNAME,LASTNAME,AGE,EMAIL) VALUES
+(1, 'John', 'Doe', 20, 'john.doe@example.com'),
+(2, 'Jane', 'Smith', 22, 'jane.smith@example.com'),
+(3, 'Michael', 'Brown', 21, 'michael.brown@example.com'),
+(4, 'Emily', 'Davis', 23, 'emily.davis@example.com'),
+(5, 'Daniel', 'Johnson', 19, 'daniel.johnson@example.com');
+
+-- Insertar datos en la tabla INSTRUCTORS
+INSERT INTO INSTRUCTORS (INSTRUCTORID, FIRSTNAME, LASTNAME, AGE, EMAIL) VALUES
+(1, 'Alice', 'Walker', 35, 'alice.walker@example.com'),
+(2, 'Robert', 'Wilson', 45, 'robert.wilson@example.com'),
+(3, 'Linda', 'Taylor', 40, 'linda.taylor@example.com');
+
+-- Insertar datos en la tabla COURSES
+INSERT INTO COURSES (COURSESID, COURSENAME, DESCRIPTION, INSTRUCTORID, DURATIONHOURS) VALUES
+(1, 'Database Systems', 'Introduction to database design and SQL', 1, 40),
+(2, 'Operating Systems', 'Study of modern operating systems', 2, 50),
+(3, 'Data Structures', 'Detailed study of data structures', 1, 45),
+(4, 'Computer Networks', 'Introduction to networking concepts', 3, 35),
+(5, 'Artificial Intelligence', 'Basics of AI and machine learning', 2, 60);
+
+-- Insertar datos en la tabla STUDENT_COURSES
+INSERT INTO STUDENT_COURSES (STUDENTID, COURSESID) VALUES
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 3),
+(3, 4),
+(3, 5),
+(4, 2),
+(4, 5),
+(5, 3),
+(5, 4);
