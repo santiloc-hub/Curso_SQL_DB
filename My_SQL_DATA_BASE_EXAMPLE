@@ -1,6 +1,6 @@
 CREATE DATABASE	IF NOT EXISTS COLEGIO;
 USE COLEGIO;
-CREATE TABLE IF NOT EXISTS ESTUDIANTE(
+CREATE TABLE IF NOT EXISTS STUDENTS(
     STUDENTID INT PRIMARY KEY,
     FIRSTNAME VARCHAR(50),
     LASTNAME VARCHAR(50),
@@ -45,7 +45,7 @@ USE COLEGIO;
 SELECT * FROM INSTRUCTORS;
 
 -- Insertar datos en la tabla STUDENTS
-INSERT INTO ESTUDIANTE(STUDENTID,FIRSTNAME,LASTNAME,AGE,EMAIL) VALUES
+INSERT INTO STUDENTS(STUDENTID,FIRSTNAME,LASTNAME,AGE,EMAIL) VALUES
 (1, 'John', 'Doe', 20, 'john.doe@example.com'),
 (2, 'Jane', 'Smith', 22, 'jane.smith@example.com'),
 (3, 'Michael', 'Brown', 21, 'michael.brown@example.com'),
@@ -77,4 +77,3 @@ VALUES
     (1, 3),  -- John Doe también se inscribe en 'Data Structures' (ID=3)
     (2, 1),  -- Jane Smith también se inscribe en 'Database Systems' (ID=1)
     (3, 2);  -- Michael Brown también se inscribe en 'Operating Systems' (ID=2)
-
