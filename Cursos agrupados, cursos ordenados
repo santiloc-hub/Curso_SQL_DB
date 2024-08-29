@@ -1,12 +1,8 @@
--- Escribe tu código aquí 👇
 SELECT
-  teachers.name AS teacher,
-  SUM(courses.n_reviews) AS total_reviews
-FROM courses
-LEFT JOIN
-  teachers ON 
-  courses.teacher_id = teachers.id
-WHERE
-  courses.teacher_id IS NOT NULL
-GROUP BY teachers.name
-ORDER BY total_reviews DESC;
+ teachers.name as teacher ,sum(courses.n_reviews) as total_reviews
+from courses
+LEFT join teachers
+on courses.teacher_id=teachers.id
+where teacher not null
+group by teachers.name 
+order by total_reviews desc;
