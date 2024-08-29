@@ -1,0 +1,10 @@
+-- Escribe tu código aquí 👇
+SELECT *
+FROM courses;
+SELECT *
+FROM teachers;
+select  teacher_id,n_reviews 
+from courses
+where teacher_id not null
+group by teacher_id,n_reviews;
+
