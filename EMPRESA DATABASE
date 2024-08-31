@@ -1,0 +1,38 @@
+CREATE DATABASE EMPRESA;
+USE EMPRESA;
+-- Crear la tabla departments
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+
+-- Insertar datos en la tabla departments
+INSERT INTO departments (department_id, department_name) VALUES
+(1, 'Human Resources'),
+(2, 'Finance'),
+(3, 'Engineering'),
+(4, 'Marketing'),
+(5, 'Sales');
+
+-- Crear la tabla employees
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department_id INT,
+    salary DECIMAL(10, 2),
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+-- Insertar datos en la tabla employees
+INSERT INTO employees (employee_id, first_name, last_name, department_id, salary) VALUES
+(1, 'John', 'Doe', 1, 40000),
+(2, 'Jane', 'Smith', 2, 55000),
+(3, 'Michael', 'Johnson', 3, 80000),
+(4, 'Emily', 'Davis', 4, 47000),
+(5, 'William', 'Brown', 5, 30000),
+(6, 'Elizabeth', 'Jones', 3, 75000),
+(7, 'David', 'Garcia', 1, 42000),
+(8, 'Emma', 'Martinez', 2, 46000),
+(9, 'Lucas', 'Miller', 3, 90000),
+(10, 'Olivia', 'Wilson', 5, 29000);
