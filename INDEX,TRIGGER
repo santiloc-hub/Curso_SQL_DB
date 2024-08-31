@@ -1,0 +1,31 @@
+CREATE INDEX
+Un índice en SQL es similar a un índice en un libro: ayuda a encontrar información rápidamente sin tener que revisar todas las páginas. Los índices mejoran la velocidad de las consultas sobre una tabla.
+
+CREATE INDEX se utiliza para crear un índice en una tabla.
+Los índices pueden ser creados en una o más columnas de una tabla.
+Ayudan a acelerar las búsquedas y las consultas de datos.
+Ejemplo:
+
+CREATE INDEX idx_employee_name ON employees (name);
+
+En este ejemplo, se crea un índice llamado idx_employee_name en la columna name de la tabla employees. Ahora, las consultas que buscan por el nombre serán más rápidas.
+
+////////////////////////////////////////////////////////////////
+
+TRIGGER
+Un disparador (trigger) es un conjunto de instrucciones que se ejecutan automáticamente en respuesta a ciertos eventos en una tabla o vista, como inserciones, actualizaciones o eliminaciones de datos.
+
+Los triggers pueden ejecutarse antes o después de un evento específico (como BEFORE INSERT o AFTER UPDATE).
+Son útiles para mantener la integridad de los datos y realizar tareas automáticas.
+Ejemplo:
+
+CREATE TRIGGER trg_before_insert_employee BEFORE INSERT ON employees FOR EACH ROW BEGIN   SET NEW.created_at = NOW(); END;
+
+En este ejemplo, se crea un trigger llamado trg_before_insert_employee. Este trigger se ejecuta antes de insertar una nueva fila en la tabla employees y automáticamente establece el valor de la columna created_at a la fecha y hora actuales (NOW()).
+
+/////////////////////////////////////////////////////////////
+
+En resumen:
+
+CREATE INDEX: Mejora la rapidez de las búsquedas en la tabla.
+TRIGGER: Ejecuta automáticamente acciones cuando ocurren eventos específicos en la tabla, como inserciones, actualizaciones o eliminaciones.
