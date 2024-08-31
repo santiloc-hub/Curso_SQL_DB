@@ -1,0 +1,31 @@
+-- Selecciona la base de datos "EMPRESA" para realizar todas las operaciones siguientes
+USE EMPRESA;
+
+-- Crea una CTE llamada "AverageSalaries" que calcula el salario promedio por departamento
+WITH AverageSalaries AS (
+    SELECT d.department_name,           -- Selecciona el nombre del departamento
+           AVG(e.salary) AS AvgSalary   -- Calcula el salario promedio en el departamento
+    FROM employees e                    -- Desde la tabla "employees" con alias "e"
+    JOIN departments d ON e.department_id = d.department_id -- Une "employees" con "departments" basado en "department_id"
+    GROUP BY d.department_name          -- Agrupa los resultados por el nombre del departamento
+),
+
+-- Crea una segunda CTE llamada "HighSalaryDepartments" que selecciona solo los departamentos
+-- donde el salario promedio es mayor a $45,000
+HighSalaryDepartments AS (
+    SELECT department_name,             -- Selecciona el nombre del departamento
+           AvgSalary                    -- Selecciona el salario promedio
+    FROM AverageSalaries                -- Desde la CTE "AverageSalaries"
+    WHERE AvgSalary > 45000             -- Filtra solo aquellos departamentos con salario promedio mayor a $45,000
+)
+
+-- Selecciona los empleados cuyo salario es mayor que el salario promedio de su departamento
+-- en aquellos departamentos que tienen un salario promedio superior a $45,000
+SELECT e.first_name,                    -- Selecciona el primer nombre del empleado
+       e.last_name,                     -- Selecciona el apellido del empleado
+       e.salary,                        -- Selecciona el salario del empleado
+       d.department_name                -- Selecciona el nombre del departamento al que pertenece el empleado
+FROM employees e                        -- Desde la tabla "employees" con alias "e"
+JOIN departments d ON e.department_id = d.department_id -- Une "employees" con "departments" basado en "department_id"
+JOIN HighSalaryDepartments hsd ON d.department_name = hsd.department_name -- Une con "HighSalaryDepartments" basado en "department_name"
+WHERE e.salary > hsd.AvgSalary;         -- Filtra solo los empleados cuyo salario es mayor que el salario promedio de su departamento
