@@ -1,0 +1,41 @@
+Business Intelligence (BI):
+- Tecnologías y herramientas para procesar datos y ayudar a la toma de decisiones en altos cargos.
+
+- Procesos tradicionales basados en ETL o ELT.
+
+- Visualizaciones como tableros de indicadores y reportes de ventas.
+
+Big Data:
+- Análisis de grandes volúmenes de datos provenientes de múltiples fuentes.
+
+- Importancia de la limpieza, transformación de datos y aplicación de reglas de negocios.
+
+- Concepto de las 5V: Volume, Value, Variety, Velocity, Veracity.
+
+Ciencia de Datos:
+- Búsqueda de patrones en la información para apoyar decisiones estratégicas.
+
+- Identificación de patrones de ventas y recomendaciones para aumentar ingresos.
+
+Machine Learning:
+- Generación de modelos de recomendación basados en el comportamiento del usuario.
+
+- Aplicación en plataformas de ventas y publicidad.
+
+Otros Procesos Avanzados:
+- Deep Learning, inteligencia artificial y otros procesos que utilizan datos procesados.
+
+Arquitecturas de Datos:
+- On-premise, cloud, y arquitecturas híbridas.
+
+- Herramientas on-premise recomendadas: SQL, Analysis Service, Reporting Service, Integration Service, Power BI.
+
+- Herramientas cloud recomendadas: GCP, AWS, Azure.
+
+Migración de Arquitecturas:
+- Proceso de migración de on-premise a cloud.
+
+- Ejemplo con Azure: Data Lake, Databricks, Synapses, y Power BI.
+
+Importancia de las Migraciones Paso a Paso:
+- Comprensión del negocio y lógica detrás de los desarrollos para asegurar la calidad en procesos de datos.
