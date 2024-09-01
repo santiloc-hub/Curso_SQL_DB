@@ -1,0 +1,28 @@
+GRANT:
+GRANT se utiliza para otorgar permisos específicos a los usuarios o roles en una base de datos. Estos permisos determinan qué operaciones pueden realizar los usuarios en los objetos de la base de datos, como tablas, vistas, procedimientos almacenados, etc.
+
+La sintaxis general de GRANT es la siguiente:
+
+GRANT permiso ON objeto TO usuario;
+Donde:
+
+Permiso es el tipo de permiso que se otorga, como SELECT, INSERT, UPDATE, DELETE, etc.
+Objeto es el objeto de la base de datos al que se aplica el permiso, como una tabla, vista, procedimiento almacenado, etc.
+Usuario es el usuario o rol al que se le otorgan los permisos.
+Por ejemplo, para otorgar permisos de selección en una tabla llamada employees al usuario user1, puedes usar:
+
+GRANT SELECT ON employees TO user1;
+REVOKE:
+REVOKE se utiliza para revocar o eliminar los permisos previamente otorgados a un usuario o rol en una base de datos.
+
+La sintaxis general de REVOKE es la siguiente:
+
+REVOKE permiso ON objeto FROM usuario;
+Donde:
+
+permiso es el tipo de permiso que se revoca.
+objeto es el objeto de la base de datos del que se revocan los permisos.
+usuario es el usuario o rol al que se le revocan los permisos.
+Por ejemplo, para revocar los permisos de selección en la tabla employees del usuario user1, puedes usar:
+
+REVOKE SELECT ON employees FROM user1;
