@@ -1,0 +1,37 @@
+DELIMITER //
+CREATE PROCEDURE AddEmployeeAndUpdateCountEmployeeXDep(
+	IN p_FirstName VARCHAR(50),
+	IN p_LastName VARCHAR(50),
+	IN p_DepartmentID INT,
+	IN p_Salary DECIMAL(10,2),
+	OUT p_CountEmployeeXDep INT,
+	OUT p_DepartmentName VARCHAR(100)
+)
+BEGIN
+	DECLARE v_CountEmpXDep INT;
+	DECLARE v_nameDep VARCHAR(100);
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+	BEGIN
+	SELECT 'Error: No se pudo completar la operación.' AS ErrorMessage;
+	ROLLBACK;
+END;
+START TRANSACTION; -- Inicia una transaccion
+	INSERT INTO employee(First_name, department_id, salary)
+	VALUES (CONCAT(p_FirstName, ' ', p_LastName), p_DepartmentID, p_Salary);
+	-- Caluclar el numero de empleados x Dep
+	SELECT Count(*)
+	INTO v_CountEmpXDep
+	FROM employee
+	WHERE department_id = p_DepartmentID
+	GROUP BY department_id;
+	-- get name of department
+	SELECT department_name
+	INTO v_nameDep
+	FROM department
+	where department_id = p_DepartmentID;
+	SET p_CountEmployeeXDep = v_CountEmpXDep;
+	SET p_DepartmentName = v_nameDep;
+	COMMIT;
+END //
+
+DELIMITER ;
