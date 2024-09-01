@@ -1,2 +1,23 @@
 -- Procedimientos Almacenados en SQL
 -- Ejecutar procesos cada cierto tiempo para no hacerlo manualmente, variables ,parametros, reglas de negocio, manipulacion de tablas etc
+delimiter //
+create PROCEDURE employees_insert
+(
+    in first_name VARCHAR(50),        -- Define el parámetro de entrada para el primer nombre
+    in last_name VARCHAR(50),         -- Define el parámetro de entrada para el apellido
+    in department_id INT,             -- Define el parámetro de entrada para el ID del departamento
+    in salary DECIMAL(10,2)
+    )           -- Define el parámetro de entrada para el salario
+
+BEGIN
+    -- Inserta un nuevo registro en la tabla "employees" usando los parámetros proporcionados
+  
+    INSERT INTO employees(first_name, last_name, department_id, salary)
+    VALUES (first_name, last_name, department_id, salary);
+END;
+call employees_insert('hola','esto',5,5000000)
+
+
+
+
+select * from employees
